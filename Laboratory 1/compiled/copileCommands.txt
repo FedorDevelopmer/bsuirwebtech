@@ -1,0 +1,4 @@
+From project dir:
+javac -d {USER_DIR}/compiled  ./datastore/*.java ./io/*.java ./processing/Main.java
+From the "compile" dir one:
+java by.bsuir.wtl1.processing.Main ./by/bsuir/wtl1/processing/Main.class

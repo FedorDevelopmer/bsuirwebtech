@@ -1,0 +1,4 @@
+Jar file building command:
+jar cfm res.jar META-INF/MANIFEST.mf ./by/
+Jar file execution command:
+java -jar res.jar
