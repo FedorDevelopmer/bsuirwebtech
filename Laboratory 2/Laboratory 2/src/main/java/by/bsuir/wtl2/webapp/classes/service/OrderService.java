@@ -2,14 +2,12 @@ package by.bsuir.wtl2.webapp.classes.service;
 
 import by.bsuir.wtl2.webapp.classes.dao.objects.CourseDao;
 import by.bsuir.wtl2.webapp.classes.dao.objects.OrderDao;
-import by.bsuir.wtl2.webapp.classes.entities.Course;
 import by.bsuir.wtl2.webapp.classes.entities.Order;
 import by.bsuir.wtl2.webapp.classes.exceptions.DaoException;
 import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +62,18 @@ public class OrderService {
             throw new ServiceException(e.getMessage(),e);
         }
     }
-    public List<Order> getAllOrders(int offset) throws ServiceException{
+
+    public int getTotalOrdersCount() throws ServiceException{
+        try {
+            CourseDao courseDao = new CourseDao();
+            int count = courseDao.getTableRowsCount();
+            return count;
+        } catch (DaoException e){
+            throw new ServiceException(e.getMessage(),e);
+        }
+    }
+
+    public List<Order> getPageOrdersList (int offset) throws ServiceException{
         try {
             OrderDao orderDao = new OrderDao();
             List<Order> orders = new ArrayList<>();

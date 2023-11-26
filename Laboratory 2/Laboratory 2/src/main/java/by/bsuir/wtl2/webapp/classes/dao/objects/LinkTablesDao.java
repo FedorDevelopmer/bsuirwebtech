@@ -1,7 +1,9 @@
 package by.bsuir.wtl2.webapp.classes.dao.objects;
 
+import by.bsuir.wtl2.webapp.classes.dao.commands.DeleteCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.InsertionCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.SelectionCommand;
+import by.bsuir.wtl2.webapp.classes.dao.commands.UpdateCommand;
 import by.bsuir.wtl2.webapp.classes.dao.connection.ConnectionPool;
 import by.bsuir.wtl2.webapp.classes.exceptions.DaoException;
 
@@ -30,6 +32,19 @@ public class LinkTablesDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+    public void updateLink(String linkTableName,List<String> updateAttributes, Map<String,Object> params,
+                             List<String> selectAttributes, Map<String,Object> newParams)
+            throws DaoException {
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            UpdateCommand.completeCommand(connection, linkTableName,updateAttributes,params,
+                    selectAttributes,newParams);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+    }
     public void getLinks(String linkTableName, List<String> attributes, Map<String,Object> params)
             throws DaoException {
         try {
@@ -42,6 +57,32 @@ public class LinkTablesDao {
         } catch (SQLException e) {
             throw new DaoException(e.getMessage(),e);
         }
+    }
+
+    public void deleteLink(String linkTableName,List<String> attributes,
+                           Map<String,Object> params) throws DaoException {
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            DeleteCommand.completeCommand(connection, linkTableName,attributes,params);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+    }
+
+
+    public int getTableRowsCount(String tableName) throws DaoException{
+        int result = -1;
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            result = SelectionCommand.selectTableRowsCount(connection,tableName);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+        return result;
     }
 
     public Map<String,Object> getLinkSelectionResult(List<String> attributes) throws DaoException {
@@ -107,8 +148,6 @@ public class LinkTablesDao {
         }
     }
 
-    public void deleteLink(List<String> attributes, Map<String,String> params) {
 
-    }
 
 }

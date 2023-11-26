@@ -5,6 +5,8 @@ import by.bsuir.wtl2.webapp.classes.validation.IValidator;
 public class TextValidator implements IValidator {
     @Override
     public boolean validate(String value) {
-        return value.matches("[A-Za-z\\\\s_0-9,+-:;?!.()\"&*#%]+");
+        boolean valid;
+        valid = value.matches("[A-Za-z\\\\s_0-9,+-:;?!.()\"&*#%]+");
+        return valid;
     }
 }

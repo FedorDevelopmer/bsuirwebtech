@@ -3,7 +3,6 @@ package by.bsuir.wtl2.webapp.classes.service;
 import by.bsuir.wtl2.webapp.classes.dao.objects.CourseDao;
 import by.bsuir.wtl2.webapp.classes.dao.objects.OrderDao;
 import by.bsuir.wtl2.webapp.classes.entities.Course;
-import by.bsuir.wtl2.webapp.classes.entities.Order;
 import by.bsuir.wtl2.webapp.classes.exceptions.DaoException;
 import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 
@@ -78,7 +77,7 @@ public class CourseService {
         }
     }
 
-    public List<Course> getAllCourses(int offset) throws ServiceException{
+    public List<Course> getPageCoursesList(int offset) throws ServiceException{
         try {
             CourseDao courseDao = new CourseDao();
             List<Course> courses = new ArrayList<>();
@@ -96,6 +95,15 @@ public class CourseService {
         }
     }
 
+    public int getTotalCourseCount() throws ServiceException{
+        try {
+            CourseDao courseDao = new CourseDao();
+            int count = courseDao.getTableRowsCount();
+            return count;
+        } catch (DaoException e){
+            throw new ServiceException(e.getMessage(),e);
+        }
+    }
 
     public void fillCourseWithParams(Course course,Map<String,Object> params) {
         course.setId(Integer.parseInt(String.valueOf(params.get("c_id"))));

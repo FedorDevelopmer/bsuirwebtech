@@ -4,7 +4,6 @@ import by.bsuir.wtl2.webapp.classes.controller.logic.ICommand;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageName;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageNames;
 import by.bsuir.wtl2.webapp.classes.entities.Order;
-import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import by.bsuir.wtl2.webapp.classes.service.OrderService;
 
 import javax.servlet.ServletContext;
@@ -31,7 +30,7 @@ public class PreviousOrdersPageCommand implements ICommand {
         context.setAttribute("orders_offset",currentOffset);
         try {
             OrderService orderService = new OrderService();
-            List<Order> orders = orderService.getAllOrders(currentOffset);
+            List<Order> orders = orderService.getPageOrdersList(currentOffset);
             context.setAttribute("orders",orders);
             return resultRedirectPage;
         }catch (Exception e){

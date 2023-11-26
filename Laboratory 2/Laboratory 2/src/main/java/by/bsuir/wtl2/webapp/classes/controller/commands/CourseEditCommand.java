@@ -28,8 +28,7 @@ public class CourseEditCommand implements ICommand {
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.MAIN_PAGE;
         try {
-            boolean valid = true;
-            ValidatorHandler validator = ValidatorHandler.getInstance();
+            boolean valid;
             HttpSession session = request.getSession();
             CourseService courseService = new CourseService();
             Course updatedCourse = new Course();
@@ -39,12 +38,9 @@ public class CourseEditCommand implements ICommand {
                 params.put(entry.getKey(), new String(entry.getValue()[0].getBytes(StandardCharsets.ISO_8859_1),StandardCharsets.UTF_8));
             }
             params.put("c_id",0);
-            courseService.fillCourseWithParams(updatedCourse, params);
-            valid = validator.getValidatorByName("name_validator").validate(updatedCourse.getName())
-                && validator.getValidatorByName("name_validator").validate(updatedCourse.getAuthor())
-                && validator.getValidatorByName("text_validator").validate(updatedCourse.getMainTech())
-                && validator.getValidatorByName("text_validator").validate(updatedCourse.getDescription());
+            valid = applyValidation(params);
             if(valid) {
+                courseService.fillCourseWithParams(updatedCourse, params);
                 courseService.updateCourse((Course) context.getAttribute("course"), updatedCourse);
                 context.setAttribute("course", updatedCourse);
                 session.setAttribute("course", null);
@@ -60,4 +56,16 @@ public class CourseEditCommand implements ICommand {
 
         }
     }
+
+    private boolean applyValidation(Map<String,Object> params){
+        boolean valid;
+        ValidatorHandler validator = ValidatorHandler.getInstance();
+        valid = validator.getValidatorByName("name_validator").validate(String.valueOf(params.get("c_name")))
+                && validator.getValidatorByName("name_validator").validate(String.valueOf(params.get("c_author")))
+                && validator.getValidatorByName("text_validator").validate(String.valueOf(params.get("c_main_tech")))
+                && validator.getValidatorByName("text_validator").validate(String.valueOf(params.get("c_description")))
+                && validator.getValidatorByName("price_validator").validate(String.valueOf(params.get("c_price")));
+    return valid;
+    }
 }
+

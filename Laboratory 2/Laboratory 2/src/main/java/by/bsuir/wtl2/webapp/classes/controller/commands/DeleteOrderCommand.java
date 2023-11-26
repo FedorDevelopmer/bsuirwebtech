@@ -4,7 +4,6 @@ import by.bsuir.wtl2.webapp.classes.controller.logic.ICommand;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageName;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageNames;
 import by.bsuir.wtl2.webapp.classes.entities.Order;
-import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import by.bsuir.wtl2.webapp.classes.service.OrderService;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -26,12 +25,13 @@ public class DeleteOrderCommand implements ICommand {
             OrderService orderService = new OrderService();
             int ordersOffset = Integer.parseInt(String
                     .valueOf(context.getAttribute("orders_offset")));
-            List<Order> currentOrderPage = orderService.getAllOrders(ordersOffset);
+            List<Order> currentOrderPage = orderService.getPageOrdersList(ordersOffset);
             orderService.deleteOrder(currentOrderPage.get(Integer
                     .parseInt(request.getParameter("orderId"))));
             request.getSession().setAttribute("changed_orders",null);
             context.setAttribute("orders",null);
             context.setAttribute("orders_offset",null);
+            context.setAttribute("orders_count",null);
             return resultRedirectPage;
         }catch (Exception e){
             resultRedirectPage=PageNames.ERROR_PAGE;

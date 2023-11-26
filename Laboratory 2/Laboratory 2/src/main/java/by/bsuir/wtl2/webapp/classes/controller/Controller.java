@@ -65,4 +65,14 @@ public class Controller extends HttpServlet {
             dispatcher.forward(request,response);
         }
     }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+        try{
+            ConnectionPool.getInstance().destroy();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

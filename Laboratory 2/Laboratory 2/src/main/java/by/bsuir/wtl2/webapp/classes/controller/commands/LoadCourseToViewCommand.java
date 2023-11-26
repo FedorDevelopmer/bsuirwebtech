@@ -4,7 +4,6 @@ import by.bsuir.wtl2.webapp.classes.controller.logic.ICommand;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageName;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageNames;
 import by.bsuir.wtl2.webapp.classes.entities.Course;
-import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import by.bsuir.wtl2.webapp.classes.service.CourseService;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -25,7 +24,7 @@ public class LoadCourseToViewCommand implements ICommand {
         int currentOffset = Integer.parseInt(String.valueOf(context.getAttribute("offset")));
         try {
             CourseService courseService = new CourseService();
-            courses = courseService.getAllCourses(currentOffset);
+            courses = courseService.getPageCoursesList(currentOffset);
             context.setAttribute("course",courses.get(Integer
                     .parseInt(request.getParameter("courseId"))));
             return resultRedirectPage;

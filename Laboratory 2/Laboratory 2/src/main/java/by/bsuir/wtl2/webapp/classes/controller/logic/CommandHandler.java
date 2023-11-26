@@ -28,13 +28,14 @@ public class CommandHandler {
         commandMap.put("update_user",new UserUpdateCommand());
         commandMap.put("load_orders",new LoadOrdersCommand());
         commandMap.put("next_orders_page",new NextOrdersPageCommand());
-        commandMap.put("prev_order_page",new PreviousOrdersPageCommand());
+        commandMap.put("prev_orders_page",new PreviousOrdersPageCommand());
         commandMap.put("change_order_status",new ChangeOrderStatusCommand());
         commandMap.put("orders_accept",new OrdersAcceptCommand());
         commandMap.put("order_delete",new DeleteOrderCommand());
         commandMap.put("add_course",new CreateCourseCommand());
         commandMap.put("finalize_order",new LoadCartCommand());
         commandMap.put("view_course",new LoadCourseToViewCommand());
+        commandMap.put("delete_course",new DeleteCourseCommand());
     }
 
     public static CommandHandler getInstance(){

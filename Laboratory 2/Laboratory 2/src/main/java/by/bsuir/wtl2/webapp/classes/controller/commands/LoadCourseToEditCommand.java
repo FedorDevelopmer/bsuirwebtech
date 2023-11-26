@@ -4,7 +4,6 @@ import by.bsuir.wtl2.webapp.classes.controller.logic.ICommand;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageName;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageNames;
 import by.bsuir.wtl2.webapp.classes.entities.Course;
-import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import by.bsuir.wtl2.webapp.classes.service.CourseService;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -30,7 +29,7 @@ public class LoadCourseToEditCommand implements ICommand {
 
             try {
                 CourseService courseService = new CourseService();
-                courses = courseService.getAllCourses(currentOffset);
+                courses = courseService.getPageCoursesList(currentOffset);
                 session.setAttribute("course",courses.get(Integer
                         .parseInt(request.getParameter("courseId"))));
                 request.getSession().setAttribute("input_error",null);

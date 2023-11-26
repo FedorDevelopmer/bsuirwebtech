@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class CourseDao {
 
-    private static String courseTableName = "course";
+    private static final String courseTableName = "course";
 
     private static ResultSet lastResult = null;
 
@@ -60,6 +60,23 @@ public class CourseDao {
         }
     }
 
+    public void deleteCourse(List<String> attributes, Map<String,Object> params) {
+
+    }
+
+    public int getTableRowsCount() throws DaoException{
+        int result = -1;
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            result = SelectionCommand.selectTableRowsCount(connection, courseTableName);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+        return result;
+    }
+
     public void getCourseList(String selectionAttribute,int offset,int limit)
             throws DaoException {
         try {
@@ -72,9 +89,7 @@ public class CourseDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
-    public void deleteCourse(List<String> attributes, Map<String,String> params) {
 
-    }
     public Map<String,Object> getCourseSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultOrder = new HashMap<>();
         try {
@@ -100,24 +115,39 @@ public class CourseDao {
         }
     }
     public List<Map<String,Object>> getCoursesSelectionResult(List<String> attributes) throws DaoException {
-        Map<String,Object> resultUser = new HashMap<>();
-        List<Map<String,Object>> resultUsers = new ArrayList<>();
+        Map<String,Object> resultCourseAttributes = new HashMap<>();
+        List<Map<String,Object>> resultCoursesAttributes = new ArrayList<>();
         try {
             if(!lastResultEmpty) {
                 for (String attribute : attributes) {
-                    resultUser.put(attribute, lastResult.getObject(attribute));
+                    resultCourseAttributes.put(attribute, lastResult.getObject(attribute));
                 }
-                resultUsers.add(resultUser);
+                resultCoursesAttributes.add(resultCourseAttributes);
                 while(lastResult.next()) {
-                    resultUser = new HashMap<>();
+                    resultCourseAttributes = new HashMap<>();
                     for (String attribute : attributes) {
-                        resultUser.put(attribute, lastResult.getObject(attribute));
+                        resultCourseAttributes.put(attribute, lastResult.getObject(attribute));
                     }
-                    resultUsers.add(resultUser);
+                    resultCoursesAttributes.add(resultCourseAttributes);
                 }
                 lastResult.first();
             }
-            return resultUsers;
+            return resultCoursesAttributes;
+        }catch (SQLException e){
+            throw new DaoException(e.getMessage(),e);
+        }
+    }
+
+    public List<Object> getCoursesSelectionResult(String attribute) throws DaoException {
+        List<Object> resultCoursesAttribute = new ArrayList<>();
+        try {
+            if(!lastResultEmpty) {
+                resultCoursesAttribute.add(lastResult.getObject(attribute));
+                while(lastResult.next()) {
+                    resultCoursesAttribute.add(lastResult.getObject(attribute));
+                }
+            }
+            return resultCoursesAttribute;
         }catch (SQLException e){
             throw new DaoException(e.getMessage(),e);
         }

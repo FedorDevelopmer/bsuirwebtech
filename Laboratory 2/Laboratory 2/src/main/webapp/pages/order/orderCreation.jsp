@@ -1,20 +1,23 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/orderCreation.css" />
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Оформление заказа</title>
+    <title><fmt:message key="order_finalization_label"/></title>
 </head>
 <body>
-    <h1>Оформление заказа</h1>
-    <h2>Товары в корзине:</h2>
+    <h1><fmt:message key="order_finalization_label"/></h1>
+    <h2><fmt:message key="courses_in_cart"/></h2>
     <c:if test="${sessionScope.chosen != null}">
     <table>
         <tr>
-            <th>Наименование</th>
-            <th>Основная технология</th>
-            <th>Цена</th>
+            <th><fmt:message key="course_name"/></th>
+            <th><fmt:message key="main_tech"/></th>
+            <th><fmt:message key="price"/></th>
             <c:forEach var="course" items="${sessionScope.chosen}">
                 <tr>
                     <td>${course.name}</td>
@@ -23,15 +26,14 @@
                 </tr>
             </c:forEach>
         </tr>
-        <%-- Получение товаров из сессии --%>
     </table>
+     <form action="/main" method="post">
+        <input type="hidden" name="command" value="create_order" />
+        <button type="submit"><fmt:message key="finalize_order"/></button>
+     </form>
     </c:if>
     <c:if test="${sessionScope.chosen == null}">
-    <h3>Ваша корзина пуста</h3>
+        <h3><fmt:message key="empty_cart_label"/></h3>
     </c:if>
-    <form action="/main" method="post">
-        <input type="hidden" name="command" value="create_order" />
-        <input type="submit" value="Оформить заказ">
-    </form>
 </body>
 </html>

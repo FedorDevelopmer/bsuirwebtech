@@ -62,6 +62,41 @@ public class OrderDao {
         }
     }
 
+    public void deleteOrder(List<String> attributes, Map<String,Object> params)throws DaoException {
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            DeleteCommand.completeCommand(connection, orderTableName,attributes,params);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+    }
+
+    public int getTableRowsCount() throws DaoException{
+        int result = -1;
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            result = SelectionCommand.selectTableRowsCount(connection,orderTableName);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+        return result;
+    }
+
+    public String getOrderById() throws DaoException {
+        try {
+            if(!lastResultEmpty) {
+                return lastResult.getString("ord_id");
+            }
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+        return null;
+    }
+
     public void getOrderList(String selectionAttribute,int offset,int limit)
             throws DaoException {
         try {
@@ -76,16 +111,7 @@ public class OrderDao {
         }
     }
 
-    public void deleteOrder(List<String> attributes, Map<String,Object> params)throws DaoException {
-        try {
-            ConnectionPool pool = ConnectionPool.getInstance();
-            Connection connection = pool.getConnection();
-            DeleteCommand.completeCommand(connection, orderTableName,attributes,params);
-            pool.releaseConnection(connection);
-        } catch (SQLException e) {
-            throw new DaoException(e.getMessage(),e);
-        }
-    }
+
     public Map<String,Object> getOrderSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultUser = new HashMap<>();
         try {

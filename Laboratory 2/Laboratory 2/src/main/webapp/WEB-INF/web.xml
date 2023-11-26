@@ -8,4 +8,20 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>LocaleFilter</filter-name>
+        <filter-class>by.bsuir.wtl2.webapp.classes.filters.LocaleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <servlet-name>Controller</servlet-name>
+    </filter-mapping>
+    <filter>
+        <filter-name>SessionFilter</filter-name>
+        <filter-class>by.bsuir.wtl2.webapp.classes.filters.SessionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <servlet-name>Controller</servlet-name>
+    </filter-mapping>
 </web-app>

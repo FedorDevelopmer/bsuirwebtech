@@ -1,9 +1,6 @@
 package by.bsuir.wtl2.webapp.classes.dao.commands;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 import java.util.Map;
 
@@ -28,16 +25,18 @@ public class SelectionCommand {
                     .append(" where ")
                     .append("(");
             for (String attribute : attributes) {
-                commandFormer.append(attribute + "=" + "\"" + params.get(attribute) + "\"")
+                commandFormer.append(attribute + "=" + "?")
                         .append(" and ");
             }
             commandFormer.delete(commandFormer.length() - 4, commandFormer.length());
             commandFormer.append(")")
                     .append(";");
-            Statement statement = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
             String command = commandFormer.toString();
-            ResultSet selectionResult = statement.executeQuery(command);
+            PreparedStatement preparedStatement = dbConnection.prepareStatement(command,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            for(int i = 0;i < params.size();i++){
+                preparedStatement.setObject(i + 1, params.get(attributes.get(i)));
+            }
+            ResultSet selectionResult = preparedStatement.executeQuery();
             logger.log(Level.DEBUG,"Selection command completed successfully");
             return selectionResult;
         }catch (SQLException e){
@@ -61,12 +60,31 @@ public class SelectionCommand {
                     .append(" offset ")
                     .append(offset)
                     .append(";");
-            Statement statement = dbConnection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
             String command = commandFormer.toString();
-            ResultSet selectionResult = statement.executeQuery(command);
+            PreparedStatement preparedStatement = dbConnection.prepareStatement(command,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            ResultSet selectionResult = preparedStatement.executeQuery();
             logger.log(Level.DEBUG,"Selection command completed successfully");
             return selectionResult;
+        }catch (SQLException e){
+            logger.log(Level.ERROR,"Error while completing selection command");
+            throw e;
+        }
+    }
+    public static int selectTableRowsCount(Connection dbConnection,String tableName) throws SQLException{
+        try {
+            StringBuilder commandFormer = new StringBuilder();
+            commandFormer.append(COMMAND_TYPE)
+                         .append(" count(*) ")
+                         .append(" as size ")
+                         .append(" from ")
+                         .append(tableName)
+                         .append(";");
+            String command = commandFormer.toString();
+            PreparedStatement preparedStatement = dbConnection.prepareStatement(command,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            ResultSet selectionResult = preparedStatement.executeQuery();
+            logger.log(Level.DEBUG,"Selection command completed successfully");
+            selectionResult.next();
+            return selectionResult.getInt("size");
         }catch (SQLException e){
             logger.log(Level.ERROR,"Error while completing selection command");
             throw e;

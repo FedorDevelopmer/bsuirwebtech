@@ -1,10 +1,7 @@
 package by.bsuir.wtl2.webapp.classes.validation;
 
 
-import by.bsuir.wtl2.webapp.classes.validation.validators.EmailValidator;
-import by.bsuir.wtl2.webapp.classes.validation.validators.NameValidator;
-import by.bsuir.wtl2.webapp.classes.validation.validators.PhoneNumberValidator;
-import by.bsuir.wtl2.webapp.classes.validation.validators.TextValidator;
+import by.bsuir.wtl2.webapp.classes.validation.validators.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +17,7 @@ public class ValidatorHandler {
             validatorMap.put("text_validator",new TextValidator());
             validatorMap.put("email_validator",new EmailValidator());
             validatorMap.put("phone_validator",new PhoneNumberValidator());
+            validatorMap.put("price_validator",new NumberValidator());
         }
 
         public static ValidatorHandler getInstance(){

@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ public class LoginCommand implements ICommand {
 
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         PageName resultRedirectPage = PageNames.MAIN_PAGE;
         Admin authorizedAdmin;
         Client authorizedClient;
@@ -51,7 +53,8 @@ public class LoginCommand implements ICommand {
                     request.getSession().setAttribute("role","client");
                     return resultRedirectPage;
                 } else {
-                    resultRedirectPage = PageNames.ERROR_PAGE;
+                    session.setAttribute("auth_error",true);
+                    resultRedirectPage = PageNames.LOGIN_PAGE;
                     return resultRedirectPage;
                 }
 

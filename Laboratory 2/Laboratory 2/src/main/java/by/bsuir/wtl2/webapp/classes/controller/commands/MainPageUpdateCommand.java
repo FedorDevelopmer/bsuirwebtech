@@ -4,7 +4,6 @@ import by.bsuir.wtl2.webapp.classes.controller.logic.ICommand;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageName;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageNames;
 import by.bsuir.wtl2.webapp.classes.entities.Course;
-import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import by.bsuir.wtl2.webapp.classes.service.CourseService;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -28,14 +27,21 @@ public class MainPageUpdateCommand implements ICommand {
         if(session.isNew()) {
             session.setMaxInactiveInterval(300 * 60);
             session.setAttribute("log", false);
+            request.setAttribute("locale","en");
         }
         context.setAttribute("offset",0);
         session.setAttribute("courses",null);
         session.setAttribute("orders",null);
         session.setAttribute("input_error",null);
+        session.setAttribute("email_error",null);
+        session.setAttribute("phone_error",null);
+        session.setAttribute("login_error",null);
+        session.setAttribute("auth_error",null);
         try {
             CourseService courseService = new CourseService();
-            List<Course> courses = courseService.getAllCourses(0);
+            List<Course> courses = courseService.getPageCoursesList(0);
+            int coursesCount = courseService.getTotalCourseCount();
+            context.setAttribute("courses_count",coursesCount);
             context.setAttribute("courses",courses);
             return resultRedirectPage;
         }catch (Exception e){

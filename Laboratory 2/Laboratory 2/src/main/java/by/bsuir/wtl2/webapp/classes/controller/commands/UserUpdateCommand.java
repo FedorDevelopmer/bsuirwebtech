@@ -6,6 +6,7 @@ import by.bsuir.wtl2.webapp.classes.controller.logic.PageNames;
 import by.bsuir.wtl2.webapp.classes.entities.User;
 import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import by.bsuir.wtl2.webapp.classes.service.UserService;
+import by.bsuir.wtl2.webapp.classes.validation.ValidatorHandler;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -26,6 +27,7 @@ public class UserUpdateCommand implements ICommand {
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.MAIN_PAGE;
+        boolean valid;
         try{
             HttpSession session = request.getSession();
             UserService userService = new UserService();
@@ -39,10 +41,16 @@ public class UserUpdateCommand implements ICommand {
             params.put("u_id",oldUser.getId());
             params.put("u_reg_date",oldUser.getRegistrationDate());
             params.put("u_pass_hash",oldUser.getPassword());
-            UserService.fillUserWithParams(updatedUser, params);
-            userService.updateUser(oldUser, updatedUser);
-            session.setAttribute("login",updatedUser.getLogin());
-            session.setAttribute("user",null);
+            valid = applyValidation(params);
+            if(valid) {
+                UserService.fillUserWithParams(updatedUser, params);
+                userService.updateUser(oldUser, updatedUser);
+                session.setAttribute("login", updatedUser.getLogin());
+                session.setAttribute("user", null);
+            }else {
+                resultRedirectPage=PageNames.USER_EDIT;
+                session.setAttribute("input_error",true);
+            }
             return resultRedirectPage;
         } catch (ServiceException e) {
             logger.log(Level.ERROR,"Error while updating user info",e);
@@ -50,5 +58,16 @@ public class UserUpdateCommand implements ICommand {
             return resultRedirectPage;
 
         }
+    }
+
+    private boolean applyValidation(Map<String,Object> params){
+        boolean valid;
+        ValidatorHandler validator = ValidatorHandler.getInstance();
+        valid = validator.getValidatorByName("name_validator").validate(String.valueOf(params.get("u_name")))
+                && validator.getValidatorByName("name_validator").validate(String.valueOf(params.get("u_surname")))
+                && validator.getValidatorByName("phone_validator").validate(String.valueOf(params.get("u_phone_num")))
+                && validator.getValidatorByName("email_validator").validate(String.valueOf(params.get("u_email")))
+                && validator.getValidatorByName("name_validator").validate(String.valueOf(params.get("u_login")));
+        return valid;
     }
 }

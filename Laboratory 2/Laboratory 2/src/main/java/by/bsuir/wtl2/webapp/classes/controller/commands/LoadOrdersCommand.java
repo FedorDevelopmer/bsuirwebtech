@@ -4,7 +4,6 @@ import by.bsuir.wtl2.webapp.classes.controller.logic.ICommand;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageName;
 import by.bsuir.wtl2.webapp.classes.controller.logic.PageNames;
 import by.bsuir.wtl2.webapp.classes.entities.Order;
-import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import by.bsuir.wtl2.webapp.classes.service.OrderService;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -25,7 +24,9 @@ public class LoadOrdersCommand implements ICommand {
         PageName resultRedirectPage = PageNames.ORDER_ACCEPT;
         try{
             OrderService orderService = new OrderService();
-            List<Order> orders = orderService.getAllOrders(0);
+            List<Order> orders = orderService.getPageOrdersList(0);
+            int ordersCount = orderService.getTotalOrdersCount();
+            context.setAttribute("orders_count",ordersCount);
             context.setAttribute("orders",orders);
             context.setAttribute("orders_offset",0);
             return resultRedirectPage;

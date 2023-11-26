@@ -1,5 +1,6 @@
 package by.bsuir.wtl2.webapp.classes.dao.objects;
 
+import by.bsuir.wtl2.webapp.classes.dao.commands.DeleteCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.InsertionCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.SelectionCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.UpdateCommand;
@@ -61,20 +62,39 @@ public class UserDao {
         }
     }
 
-    public void deleteUser(List<String> attributes, Map<String,String> params) {
+    public void deleteUser(List<String> attributes, Map<String,Object> params)throws DaoException {
+        try{
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            DeleteCommand.completeCommand(connection, userTableName,attributes,params);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+    }
 
+    public int getTableRowsCount() throws DaoException{
+        int result = -1;
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            result = SelectionCommand.selectTableRowsCount(connection,userTableName);
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
+        return result;
     }
 
     public String getUserById() throws DaoException {
         try {
             if(!lastResultEmpty) {
                 return lastResult.getString("u_id");
-            } else {
-                return "";
             }
         } catch (SQLException e) {
             throw new DaoException(e.getMessage(),e);
         }
+        return null;
     }
     public Map<String,Object> getUserSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultUser = new HashMap<>();
@@ -99,6 +119,45 @@ public class UserDao {
             throw new DaoException(e.getMessage(),e);
         }
         return null;
+    }
+
+    public List<Map<String,Object>> getUsersSelectionResult(List<String> attributes) throws DaoException {
+        Map<String,Object> resultUserAttributes = new HashMap<>();
+        List<Map<String,Object>> resultUsersAttributes = new ArrayList<>();
+        try {
+            if(!lastResultEmpty) {
+                for (String attribute : attributes) {
+                    resultUserAttributes.put(attribute, lastResult.getObject(attribute));
+                }
+                resultUsersAttributes.add(resultUserAttributes);
+                while(lastResult.next()) {
+                    resultUserAttributes = new HashMap<>();
+                    for (String attribute : attributes) {
+                        resultUserAttributes.put(attribute, lastResult.getObject(attribute));
+                    }
+                    resultUsersAttributes.add(resultUserAttributes);
+                }
+                lastResult.first();
+            }
+            return resultUsersAttributes;
+        }catch (SQLException e){
+            throw new DaoException(e.getMessage(),e);
+        }
+    }
+
+    public List<Object> getUsersSelectionResult(String attribute) throws DaoException {
+        List<Object> resultUsers = new ArrayList<>();
+        try {
+            if(!lastResultEmpty) {
+                resultUsers.add(lastResult.getObject(attribute));
+                while(lastResult.next()) {
+                    resultUsers.add(lastResult.getObject(attribute));
+                }
+            }
+            return resultUsers;
+        }catch (SQLException e){
+            throw new DaoException(e.getMessage(),e);
+        }
     }
 
     public static List<String> userAttributes() {
