@@ -18,10 +18,29 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class LoadUserToEditCommand implements ICommand{
+/**
+ * This class represents a command for loading a user to edit.
+ * It retrieves the user information based on the session role (admin or client)
+ * and sets the user attribute in the session for editing.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ */
+public class LoadUserToEditCommand implements ICommand {
 
     private static final Logger logger = Logger.getLogger(LoadOrdersCommand.class.getName());
 
+    /**
+     * This method executes the command.
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @param context  The servlet context.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException      If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.USER_EDIT;
@@ -34,16 +53,16 @@ public class LoadUserToEditCommand implements ICommand{
             if (session.getAttribute("role").equals("admin")) {
                 admin = adminService.loginAdmin(String.valueOf(session.getAttribute("login")),
                         String.valueOf(session.getAttribute("password_hash")), true);
-                session.setAttribute("user",admin);
+                session.setAttribute("user", admin);
             } else {
                 client = clientService.loginClient(String.valueOf(session.getAttribute("login")),
                         String.valueOf(session.getAttribute("password_hash")), true);
-                session.setAttribute("user",client);
+                session.setAttribute("user", client);
             }
-            request.getSession().setAttribute("input_error",null);
+            request.getSession().setAttribute("input_error", null);
             return resultRedirectPage;
-        }catch (Exception e){
-            logger.log(Level.ERROR,"Error while getting editable user info",e);
+        } catch (Exception e) {
+            logger.log(Level.ERROR, "Error while getting editable user info", e);
             resultRedirectPage = PageNames.ERROR_PAGE;
             return resultRedirectPage;
         }

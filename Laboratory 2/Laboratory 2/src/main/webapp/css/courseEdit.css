@@ -37,7 +37,7 @@ button[type="hidden"] {
   display: none;
 }
 
-label.error {
+.error {
   text-align: center;
   color: red;
   font-weight: bold;

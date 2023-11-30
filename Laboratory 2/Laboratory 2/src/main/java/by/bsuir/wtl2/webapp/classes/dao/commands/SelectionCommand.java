@@ -12,6 +12,14 @@ public class SelectionCommand {
     private final static String COMMAND_TYPE = "select";
 
     private final static Logger logger = Logger.getLogger(SelectionCommand.class.getName());
+
+    /** The selection command completing method
+     * @param dbConnection the database connection to use
+     * @param tableName the table from selection is completing
+     * @param attributes the attributes of object to select
+     * @param params the parameters of object to se
+     * @throws SQLException if an error occurs while executing the insert command
+     */
     public static ResultSet completeCommand(Connection dbConnection, String tableName,
                                             String selectionAttribute, List<String> attributes,
                                             Map<String,Object> params) throws SQLException {
@@ -45,6 +53,7 @@ public class SelectionCommand {
 
         }
     }
+
     public static ResultSet completeCommandForPagination(Connection dbConnection, String tableName,
                                                          String selectionAttribute, int offset, int limit)
                                                          throws SQLException{
@@ -70,6 +79,7 @@ public class SelectionCommand {
             throw e;
         }
     }
+
     public static int selectTableRowsCount(Connection dbConnection,String tableName) throws SQLException{
         try {
             StringBuilder commandFormer = new StringBuilder();

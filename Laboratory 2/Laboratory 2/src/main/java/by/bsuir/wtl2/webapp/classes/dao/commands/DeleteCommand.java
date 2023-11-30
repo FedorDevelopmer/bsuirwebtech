@@ -3,18 +3,32 @@ package by.bsuir.wtl2.webapp.classes.dao.commands;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Map;
 import java.util.List;
 
-import by.bsuir.wtl2.webapp.classes.exceptions.DaoException;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
+
+/**
+ * The DeleteCommand class is responsible for creating and executing a delete command on a database.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ *
+ */
 public class DeleteCommand {
 
     private final static String COMMAND_TYPE = "delete";
 
     private final static Logger logger = Logger.getLogger(DeleteCommand.class.getName());
+     /** The delete command completing method
+     * @param dbConnection the database connection to use
+     * @param tableName the table to delete from
+     * @param attributes the attributes to delete by
+     * @param params the parameters to use for the delete command
+     * @throws SQLException if an error occurs while executing the delete command
+     */
     public static void completeCommand(Connection dbConnection,String tableName,
                                 List<String> attributes, Map<String,Object> params)
                                 throws SQLException {

@@ -16,6 +16,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The AdminDao class provides methods for managing admins in the database.
+ *
+ * @author Fedor
+ * @version 1.0
+ * @since 2023-11-29
+ */
 public class AdminDao {
 
     private static String adminTableName = "Admins";
@@ -24,6 +31,13 @@ public class AdminDao {
 
     private static boolean lastResultEmpty = true;
 
+    /**
+     * Adds an admin to the database.
+     *
+     * @param attributes the attributes of the admin
+     * @param params the parameters of the admin
+     * @throws DaoException if an error occurs while adding the admin
+     */
     public void addAdmin(List<String> attributes,
                          Map<String,Object> params) throws DaoException{
         try {
@@ -35,6 +49,16 @@ public class AdminDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Updates an admin in the database.
+     *
+     * @param updateAttributes the attributes to update
+     * @param params the parameters of the admin
+     * @param selectAttributes the attributes to select
+     * @param newParams the new parameters of the admin
+     * @throws DaoException if an error occurs while updating the admin
+     */
     public void updateAdmin(List<String> updateAttributes, Map<String,Object> params,
                             List<String> selectAttributes, Map<String,Object> newParams)
                             throws DaoException {
@@ -48,6 +72,15 @@ public class AdminDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Gets an admin from the database.
+     *
+     * @param selectionAttribute the attribute to select
+     * @param attributes the attributes to return
+     * @param params the parameters of the admin
+     * @throws DaoException if an error occurs while getting the admin
+     */
     public void getAdmin(String selectionAttribute, List<String> attributes, Map<String,Object> params)
                          throws DaoException {
         try {
@@ -60,6 +93,14 @@ public class AdminDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Deletes an admin from the database.
+     *
+     * @param attributes the attributes of the admin
+     * @param params the parameters of the admin
+     * @throws DaoException if an error occurs while deleting the admin
+     */
     public void deleteAdmin(List<String> attributes, Map<String,Object> params) throws DaoException{
         try {
             ConnectionPool pool = ConnectionPool.getInstance();
@@ -72,6 +113,13 @@ public class AdminDao {
         }
     }
 
+
+    /**
+     * Gets the number of rows in the admins table.
+     *
+     * @return the number of rows
+     * @throws DaoException if an error occurs while getting the number of rows
+     */
     public int getTableRowsCount() throws DaoException{
         int result = -1;
         try {
@@ -84,6 +132,14 @@ public class AdminDao {
         }
         return result;
     }
+
+    /**
+     * Retrieves the selection result for a single admin.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection result as a map of attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Map<String,Object> getAdminSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultAdmin = new HashMap<>();
         try {
@@ -97,6 +153,13 @@ public class AdminDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+    /**
+     * Retrieves the selection result for a specific attribute of a single admin.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the value of the attribute
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Object getAdminSelectionResult(String attribute) throws DaoException {
         try {
             if(!lastResultEmpty) {
@@ -107,7 +170,13 @@ public class AdminDao {
         }
         return null;
     }
-
+    /**
+     * Retrieves the selection results for multiple admins.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection results as a list of maps, where each map represents an admin with attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection results
+     */
     public List<Map<String,Object>> getAdminsSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultAdminAttributes = new HashMap<>();
         List<Map<String,Object>> resultAdminsAttributes = new ArrayList<>();
@@ -132,6 +201,13 @@ public class AdminDao {
         }
     }
 
+    /**
+     * Retrieves the selection results for a specific attribute of multiple admins.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the values of the attribute as a list
+     * @throws DaoException if an error occurs while retrieving the selection results
+     */
     public List<Object> getAdminsSelectionResult(String attribute) throws DaoException {
         List<Object> resultAdminsAttribute = new ArrayList<>();
         try {
@@ -147,6 +223,11 @@ public class AdminDao {
         }
     }
 
+    /**
+     * Retrieves the attributes of an admin.
+     *
+     * @return the admin attributes as a list
+     */
     public static List<String> adminAttributes() {
         List<String> attributes = new ArrayList<>();
         attributes.add("adm_id");
@@ -154,6 +235,12 @@ public class AdminDao {
         return attributes;
     }
 
+    /**
+     * Retrieves the parameters of an admin.
+     *
+     * @param admin the admin object
+     * @return the admin parameters as a map of parameter-value pairs
+     */
     public static Map<String,Object> adminParams(Admin admin) {
         Map<String,Object> params = new HashMap<>();
         params.put("adm_id",admin.getId());

@@ -15,23 +15,42 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class represents a command for navigating to the next page of courses.
+ * It updates the offset value in the servlet context and retrieves the next page of courses from the database.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ */
 public class NextCoursesPageCommand implements ICommand {
+
 
     private static final Logger logger = Logger.getLogger(NextCoursesPageCommand.class.getName());
 
+    /**
+     * This method executes the command.
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @param context  The servlet context.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException      If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.MAIN_PAGE;
         int currentOffset = Integer.parseInt(String.valueOf(context.getAttribute("offset")));
-        currentOffset+=10;
-        context.setAttribute("offset",currentOffset);
+        currentOffset += 10;
+        context.setAttribute("offset", currentOffset);
         try {
             CourseService courseService = new CourseService();
             List<Course> courses = courseService.getPageCoursesList(currentOffset);
-            context.setAttribute("courses",courses);
+            context.setAttribute("courses", courses);
             return resultRedirectPage;
-        }catch (Exception e){
-            logger.log(Level.ERROR,"Error while using course pagination(next pages)",e);
+        } catch (Exception e) {
+            logger.log(Level.ERROR, "Error while using course pagination (next pages)", e);
             resultRedirectPage = PageNames.ERROR_PAGE;
             return resultRedirectPage;
         }

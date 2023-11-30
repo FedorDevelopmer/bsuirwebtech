@@ -1,5 +1,14 @@
 package by.bsuir.wtl2.webapp.classes.controller.logic;
 
+
+/**
+ * This class represents the list of pages
+ * It contains static PageName's instances
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ */
 public class PageNames {
     public static final PageName MAIN_PAGE = new PageName("/pages/main.jsp",true);
 

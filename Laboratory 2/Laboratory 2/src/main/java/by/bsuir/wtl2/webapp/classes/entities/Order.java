@@ -6,6 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The Order class represents an order.
+ * It includes properties such as ID, creation date, summary price, and acceptance status.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class Order {
 
     private int id;
@@ -19,7 +27,8 @@ public class Order {
 
     }
 
-    public Order(Date creationDate, double summaryPrice, boolean isAccepted) {
+    public Order(int id,Date creationDate, double summaryPrice, boolean isAccepted) {
+        this.id = id;
         this.creationDate = creationDate;
         this.summaryPrice = summaryPrice;
         this.isAccepted = isAccepted;

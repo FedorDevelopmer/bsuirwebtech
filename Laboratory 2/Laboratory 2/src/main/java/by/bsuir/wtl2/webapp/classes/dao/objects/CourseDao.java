@@ -1,5 +1,6 @@
 package by.bsuir.wtl2.webapp.classes.dao.objects;
 
+import by.bsuir.wtl2.webapp.classes.dao.commands.DeleteCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.InsertionCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.SelectionCommand;
 import by.bsuir.wtl2.webapp.classes.dao.commands.UpdateCommand;
@@ -15,6 +16,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The CourseDao class provides methods for managing courses in the database.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class CourseDao {
 
     private static final String courseTableName = "course";
@@ -23,6 +31,13 @@ public class CourseDao {
 
     private static boolean lastResultEmpty = true;
 
+    /**
+     * Adds a course to the database.
+     *
+     * @param attributes the attributes of the course
+     * @param params the parameters of the course
+     * @throws DaoException if an error occurs while adding the course
+     */
     public void addCourse(List<String> attributes,
                           Map<String,Object> params) throws DaoException {
         try {
@@ -34,6 +49,16 @@ public class CourseDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Updates a course in the database.
+     *
+     * @param updateAttributes the attributes to update
+     * @param params the parameters of the course
+     * @param selectAttributes the attributes to select
+     * @param newParams the new parameters of the course
+     * @throws DaoException if an error occurs while updating the course
+     */
     public void updateCourse(List<String> updateAttributes, Map<String,Object> params,
                              List<String> selectAttributes, Map<String,Object> newParams)
             throws DaoException {
@@ -47,6 +72,15 @@ public class CourseDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Gets a course from the database.
+     *
+     * @param selectionAttribute the attribute to select
+     * @param attributes the attributes to return
+     * @param params the parameters of the course
+     * @throws DaoException if an error occurs while getting the course
+     */
     public void getCourse(String selectionAttribute, List<String> attributes, Map<String,Object> params)
             throws DaoException {
         try {
@@ -60,10 +94,31 @@ public class CourseDao {
         }
     }
 
-    public void deleteCourse(List<String> attributes, Map<String,Object> params) {
-
+    /**
+     * Deletes a course from the database.
+     *
+     * @param attributes the attributes of the course
+     * @param params the parameters of the course
+     * @throws DaoException if an error occurs while getting the course
+     */
+    public void deleteCourse(List<String> attributes, Map<String,Object> params) throws DaoException {
+        try {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            DeleteCommand.completeCommand(connection,courseTableName,attributes,params);
+            lastResultEmpty=!lastResult.next();
+            pool.releaseConnection(connection);
+        } catch (SQLException e) {
+            throw new DaoException(e.getMessage(),e);
+        }
     }
 
+    /**
+     * Gets the number of rows in the course table.
+     *
+     * @return the number of rows
+     * @throws DaoException if an error occurs while getting the number of rows
+     */
     public int getTableRowsCount() throws DaoException{
         int result = -1;
         try {
@@ -77,6 +132,14 @@ public class CourseDao {
         return result;
     }
 
+    /**
+     * Gets a list of courses from the database using pagination.
+     *
+     * @param selectionAttribute the attribute to select
+     * @param offset the offset for pagination
+     * @param limit the limit for pagination
+     * @throws DaoException if an error occurs while getting the course list
+     */
     public void getCourseList(String selectionAttribute,int offset,int limit)
             throws DaoException {
         try {
@@ -90,6 +153,13 @@ public class CourseDao {
         }
     }
 
+    /**
+     * Retrieves the selection result for a single course.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection result as a map of attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Map<String,Object> getCourseSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultOrder = new HashMap<>();
         try {
@@ -103,6 +173,7 @@ public class CourseDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
     public Map<String,Object> getCourseSelectionResult(String attribute) throws DaoException {
         Map<String,Object> resultOrder = new HashMap<>();
         try {
@@ -114,6 +185,14 @@ public class CourseDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Retrieves the selection result for a specific attribute of a single course.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the value of the attribute
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public List<Map<String,Object>> getCoursesSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultCourseAttributes = new HashMap<>();
         List<Map<String,Object>> resultCoursesAttributes = new ArrayList<>();
@@ -138,6 +217,13 @@ public class CourseDao {
         }
     }
 
+    /**
+     * Retrieves the selection results for multiple courses.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection results as a list of maps, where each map represents a course with attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection results
+     */
     public List<Object> getCoursesSelectionResult(String attribute) throws DaoException {
         List<Object> resultCoursesAttribute = new ArrayList<>();
         try {
@@ -152,6 +238,12 @@ public class CourseDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Retrieves the attributes of a course.
+     *
+     * @return the course attributes as a list
+     */
     public static List<String> courseAttributes() {
         List<String> attributes = new ArrayList<>();
         attributes.add("c_id");
@@ -163,6 +255,12 @@ public class CourseDao {
         return attributes;
     }
 
+    /**
+     * Retrieves the parameters of a course.
+     *
+     * @param course the course object
+     * @return the course parameters as a map of parameter-value pairs
+     */
     public static Map<String,Object> courseParams(Course course) {
         Map<String,Object> params = new HashMap<>();
         params.put("c_id",course.getId());

@@ -11,8 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The OrderService class provides various operations related to orders.
+ * It includes methods for creating an order, deleting an order, updating an order,
+ * retrieving the ID of an order, and retrieving the total count of orders.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class OrderService {
 
+    /**
+     * Creates an order.
+     *
+     * @param order the order to create
+     * @return true if the order is successfully created, false otherwise
+     * @throws ServiceException if an error occurs during the creation process
+     */
     public boolean createOrder(Order order) throws ServiceException {
         try {
             OrderDao orderDao = new OrderDao();
@@ -27,6 +43,14 @@ public class OrderService {
             throw new ServiceException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Deletes an order.
+     *
+     * @param order the order to delete
+     * @return true if the order is successfully deleted, false otherwise
+     * @throws ServiceException if an error occurs during the deletion process
+     */
     public boolean deleteOrder(Order order) throws ServiceException{
         try {
             OrderDao orderDao = new OrderDao();
@@ -37,6 +61,15 @@ public class OrderService {
         }
         return true;
     }
+
+    /**
+     * Updates an order.
+     *
+     * @param originalOrder the original order to update
+     * @param updatedOrder the updated order
+     * @return true if the order is successfully updated, false otherwise
+     * @throws ServiceException if an error occurs during the update process
+     */
     public boolean updateOrder(Order originalOrder,Order updatedOrder) throws ServiceException{
         try {
             OrderDao userDao = new OrderDao();
@@ -50,6 +83,13 @@ public class OrderService {
         return true;
     }
 
+    /**
+     * Retrieves the ID of an order.
+     *
+     * @param order the order to retrieve the ID for
+     * @return the ID of the order
+     * @throws ServiceException if an error occurs during the retrieval process
+     */
     public int getOrderId(Order order) throws ServiceException{
         try {
             OrderDao orderDao = new OrderDao();
@@ -63,6 +103,12 @@ public class OrderService {
         }
     }
 
+    /**
+     * Retrieves the total count of orders.
+     *
+     * @return the total count of orders
+     * @throws ServiceException if an error occurs during the retrieval process
+     */
     public int getTotalOrdersCount() throws ServiceException{
         try {
             CourseDao courseDao = new CourseDao();
@@ -73,6 +119,13 @@ public class OrderService {
         }
     }
 
+    /**
+     * Retrieves a list of orders for a specific page.
+     *
+     * @param offset the offset value for pagination
+     * @return a list of orders for the specified page
+     * @throws ServiceException if an error occurs during the retrieval process
+     */
     public List<Order> getPageOrdersList (int offset) throws ServiceException{
         try {
             OrderDao orderDao = new OrderDao();
@@ -91,6 +144,12 @@ public class OrderService {
         }
     }
 
+    /**
+     * Fills an order object with the provided parameters.
+     *
+     * @param order the order object to fill
+     * @param params the parameters to fill the order object with
+     */
     public void fillOrderWithParams(Order order,Map<String,Object> params) {
         order.setId(Integer.parseInt(String.valueOf(params.get("ord_id"))));
         String dateString = String.valueOf(params.get("ord_creation_date"));

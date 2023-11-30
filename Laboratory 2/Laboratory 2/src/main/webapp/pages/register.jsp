@@ -31,7 +31,7 @@
 
         <label for="password"><fmt:message key="password"/></label>
         <input type="password" id="password" name="password" required><br><br>
-        <input type="radio" name="role" value="user" checked><fmt:message key="average_user_label"/></input><br><br>
+        <input type="radio" name="role" value="client" checked><fmt:message key="average_user_label"/></input><br><br>
         <input type="radio" name="role" value="admin"><fmt:message key="admin_label"/></input><br><br>
 
         <button type="submit"><fmt:message key="register_button"/></button>

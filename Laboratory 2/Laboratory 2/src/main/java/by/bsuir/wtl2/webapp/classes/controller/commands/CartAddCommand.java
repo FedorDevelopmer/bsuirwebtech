@@ -14,22 +14,41 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The CartAddCommand class implements the ICommand interface and is
+ * responsible for adding a course to the user's cart.
+ *
+ * @author Fedor
+ * @version 1.0
+ * @since 2023-11-27
+ */
 public class CartAddCommand implements ICommand {
+
+    /**
+     * Adds a course to the user's cart.
+     *
+     * @param request  The HttpServletRequest object.
+     * @param response The HttpServletResponse object.
+     * @param context  The ServletContext object.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        if(session.getAttribute("cart") == null) {
+        if (session.getAttribute("cart") == null) {
             Cart cart = new Cart();
             int courseId = Integer.parseInt(request.getParameter("courseId"));
             List<Course> courses = (List<Course>) context.getAttribute("courses");
             cart.add(courses.get(courseId));
-            session.setAttribute("cart",cart);
+            session.setAttribute("cart", cart);
         } else {
-            Cart cart = (Cart) session.getAttribute("cart");;
+            Cart cart = (Cart) session.getAttribute("cart");
             int courseId = Integer.parseInt(request.getParameter("courseId"));
             List<Course> courses = (List<Course>) context.getAttribute("courses");
             cart.add(courses.get(courseId));
-            session.setAttribute("cart",cart);
+            session.setAttribute("cart", cart);
         }
         return PageNames.MAIN_PAGE;
     }

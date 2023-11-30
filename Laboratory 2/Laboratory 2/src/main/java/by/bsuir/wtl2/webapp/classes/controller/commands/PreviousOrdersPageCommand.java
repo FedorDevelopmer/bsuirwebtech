@@ -16,10 +16,29 @@ import java.util.List;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+
+/**
+ * This class represents a command for navigating to the previous page of orders.
+ * It updates the offset value in the servlet context and retrieves the previous page of orders from the database.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ */
 public class PreviousOrdersPageCommand implements ICommand {
 
     private static final Logger logger = Logger.getLogger(PreviousOrdersPageCommand.class.getName());
 
+    /**
+     * This method executes the command.
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @param context  The servlet context.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException      If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.ORDER_ACCEPT;

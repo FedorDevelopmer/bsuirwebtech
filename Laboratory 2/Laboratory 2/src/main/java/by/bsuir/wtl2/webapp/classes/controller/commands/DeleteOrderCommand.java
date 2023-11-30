@@ -15,9 +15,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class represents a command for deleting an order.
+ *
+ * @author Fedor
+ * @version 1.0
+ * @since 2023-11-27
+ */
 public class DeleteOrderCommand implements ICommand {
+
     private static final Logger logger = Logger.getLogger(DeleteOrderCommand.class.getName());
 
+    /**
+     * This method executes the command.
+     *
+     * @param request The HTTP request.
+     * @param response The HTTP response.
+     * @param context The servlet context.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.MAIN_PAGE;

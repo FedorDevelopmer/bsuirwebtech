@@ -7,6 +7,14 @@ import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * The ConnectionPool class is responsible for managing a pool of database connections.
+ * It provides methods to create, release, and get connections from the pool.
+ *
+ * @author Fedor
+ * @version 1.0
+ * @since 2023-11-29
+ */
 public class ConnectionPool {
 
     private static final ConnectionPool INSTANCE = new ConnectionPool();
@@ -20,7 +28,11 @@ public class ConnectionPool {
     private ConnectionPool() {
 
     }
-
+    /**
+     * Initializes the connection pool.
+     *
+     * @throws SQLException if an error occurs while initializing the pool
+     */
     public void initialize() throws SQLException {
         int poolSize = 50;
         availableConnections = new ArrayBlockingQueue<>(poolSize);
@@ -31,6 +43,12 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Releases a connection to the pool.
+     *
+     * @param proxyConnection the connection to release
+     * @throws SQLException if an error occurs while releasing the connection
+     */
     public void releaseConnection(Connection proxyConnection) throws SQLException {
         if (proxyConnection != null) {
             usedConnections.remove(proxyConnection);
@@ -43,6 +61,12 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Gets a connection from the pool.
+     *
+     * @return the connection
+     * @throws SQLException if an error occurs while getting the connection
+     */
     public Connection getConnection() throws SQLException {
         Connection connection;
         try {
@@ -54,7 +78,11 @@ public class ConnectionPool {
         }
         return connection;
     }
-
+    /**
+     * Destroys the connection pool.
+     *
+     * @throws SQLException if an error occurs while destroying the pool
+     */
     public void destroy() throws SQLException {
         try {
             for (Connection connection : availableConnections) {

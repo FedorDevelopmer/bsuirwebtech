@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="171f9ed9-6c25-48b8-b706-400e4fe8f68a" name="Changes" comment="Fix Unit Tests and JavaDoc">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CartAddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CartAddCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/ChangeOrderStatusCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/ChangeOrderStatusCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CourseEditCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CourseEditCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CreateCourseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CreateCourseCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CreateOrderCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/CreateOrderCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/DeleteCourseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/DeleteCourseCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/DeleteOrderCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/DeleteOrderCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/FormUserOrdersCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/FormUserOrdersCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadCartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadCartCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadCourseToEditCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadCourseToEditCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadCourseToViewCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadCourseToViewCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadOrdersCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadOrdersCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadUserToEditCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoadUserToEditCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LogOutCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LogOutCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/LoginCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/MainPageUpdateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/MainPageUpdateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/NextCoursesPageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/NextCoursesPageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/NextOrdersPageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/NextOrdersPageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/OrdersAcceptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/OrdersAcceptCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/PreviousCoursesPageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/PreviousCoursesPageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/PreviousOrdersPageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/PreviousOrdersPageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/RegisterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/RegisterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/UserUpdateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/UserUpdateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/ICommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/PageName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/PageName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/PageNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/logic/PageNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/DeleteCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/DeleteCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/InsertionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/InsertionCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/SelectionCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/SelectionCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/UpdateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/UpdateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/connection/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/connection/ConnectionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/connection/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/connection/ConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/AdminDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/ClientDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/ClientDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/CourseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/CourseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/LinkTablesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/LinkTablesDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/objects/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/exceptions/DaoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/exceptions/DaoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/exceptions/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/exceptions/ServiceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/filters/LocaleFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/filters/LocaleFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/filters/SessionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/filters/SessionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/LinkTablesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/LinkTablesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/PasswordHashing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/PasswordHashing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/IValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/IValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/ValidatorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/ValidatorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/EmailValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/EmailValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/NameValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/NameValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/NumberValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/NumberValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/PhoneNumberValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/PhoneNumberValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/TextValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/TextValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/courseEdit.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/courseEdit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/course/courseCreation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/course/courseCreation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/course/courseEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/course/courseEdit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/error.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/error403.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/error403.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/order/orderAccept.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/order/orderAccept.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/order/orderCreation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/order/orderCreation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/user/userEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/user/userEdit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/user/userOrders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/user/userOrders.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2WsiSxSclSrRIn2NkpfaC40tOTT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/StudyFiles/5th semester/WT/Laboratory 2/Laboratory 2/src/main/webapp/WEB-INF/lib&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/StudyFiles/5th semester/WT/Laboratory 2/lab2/src/main/java/by/bsuir/wtl2/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4218391&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Smart Tomcat.WebApp">
+    <configuration name="java in lab2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Laboratory 2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Laboratory 2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebApp" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\Users\FedorC\.SmartTomcat\Laboratory 2\lab2" />
+      <option name="contextPath" value="/" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.82" />
+          <option name="path" value="C:/Program Files/Apache Software Foundation/Tomcat 9.0" />
+          <option name="version" value="9.0.82.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="lab2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.java in lab2" />
+      <item itemvalue="Smart Tomcat.WebApp" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.java in lab2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="171f9ed9-6c25-48b8-b706-400e4fe8f68a" name="Changes" comment="" />
+      <created>1697527694109</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697527694109</updated>
+      <workItem from="1701115184329" duration="1408000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fix Unit Tests and JavaDoc">
+      <option name="closed" value="true" />
+      <created>1701025502823</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701025502823</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix Unit Tests and JavaDoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Unit Tests and JavaDoc" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/dao/commands/DeleteCommand.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/validation/validators/EmailValidator.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/EmailValidationTest.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/bsuir/wtl2/webapp/classes/controller/commands/RegisterCommand.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

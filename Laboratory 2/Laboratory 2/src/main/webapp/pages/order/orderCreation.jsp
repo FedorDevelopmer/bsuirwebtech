@@ -10,6 +10,9 @@
     <title><fmt:message key="order_finalization_label"/></title>
 </head>
 <body>
+    <c:if test="${sessionScope.role == null}" >
+        <c:redirect url="/pages/error403.jsp"/>
+    </c:if>
     <h1><fmt:message key="order_finalization_label"/></h1>
     <h2><fmt:message key="courses_in_cart"/></h2>
     <c:if test="${sessionScope.chosen != null}">

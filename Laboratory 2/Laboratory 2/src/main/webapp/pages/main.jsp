@@ -28,11 +28,11 @@
                     <input type="hidden" name="command" value="logout"/>
                     <button type="submit"><fmt:message key="logout"/></button>
                 </form>
-                <form action="/main" method="get">
+                <form action="/main" method="post">
                     <input type = "hidden" name="command" value="load_user_to_edit"></input>
                     <button type = "submit"><fmt:message key="edit_profile"/></button>
                 </form>
-                <form action="/main" method="get">
+                <form action="/main" method="post">
                     <input type="hidden" name="command" value="form_my_orders">
                     <button type="submit"><fmt:message key="user_orders"/></button>
                 </form>
@@ -77,7 +77,7 @@
             <h4><fmt:message key="price_desc"/> ${course.price}</h4>
             <div>
             <c:if test="${sessionScope.role eq 'admin'}">
-                <form action="/main" method="get">
+                <form action="/main" method="post">
                     <input type="hidden"  name="command" value="load_course_to_edit"></input>
                     <input type="hidden"  name="courseId" value="${courses.indexOf(course)}"/>
                     <button type="submit"><fmt:message key="edit_course"/></button>
@@ -93,7 +93,7 @@
                     <button type="submit"><fmt:message key="add_course_to_cart"/></button>
                 </c:if>
             </form>
-            <form action="/main" method="get">
+            <form action="/main" method="post">
                 <input type = "hidden" name="command" value="view_course"></input>
                 <input type="hidden"  name="courseId" value="${courses.indexOf(course)}"/>
                 <button type = "submit"><fmt:message key="show_course"/></button>
@@ -109,7 +109,7 @@
     </section>
 </c:forEach>
 <div>
-<form action="/main" method="get">
+<form action="/main" method="post">
     <c:choose>
         <c:when test="${applicationScope.offset < 10}">
             <button type="submit" disabled><fmt:message key="prev_page"/></button>
@@ -120,7 +120,7 @@
     </c:choose>
 </form>
 
-<form action="/main" method="get">
+<form action="/main" method="post">
     <input type="hidden" name="command" value="next_page"></input>
     <c:choose>
     <c:when test="${applicationScope.offset + 10 >= applicationScope.courses_count}">

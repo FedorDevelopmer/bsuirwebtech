@@ -24,4 +24,12 @@
         <filter-name>SessionFilter</filter-name>
         <servlet-name>Controller</servlet-name>
     </filter-mapping>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/pages/error403.jsp</location>
+    </error-page>
 </web-app>

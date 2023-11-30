@@ -23,10 +23,28 @@ import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents a command for registration of new user.
+ * It retrieves user data and register him according to role(admin or client). It also checks for valid user login,email and phone number.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ */
 public class RegisterCommand implements ICommand {
 
     private final static Logger logger = Logger.getLogger(RegisterCommand.class.getName());
 
+    /**
+     * This method executes the command.
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @param context  The servlet context.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException      If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.MAIN_PAGE;;
@@ -99,6 +117,7 @@ public class RegisterCommand implements ICommand {
                         request.getSession().setAttribute("role", "admin");
                     }
                 } else {
+                    resultRedirectPage=PageNames.REGISTER_PAGE;
                     if (loginAlreadyExist) {
                         request.getSession().setAttribute("login_error",true);
                         return resultRedirectPage;
@@ -111,6 +130,7 @@ public class RegisterCommand implements ICommand {
                     }
                 }
             } else {
+                resultRedirectPage=PageNames.REGISTER_PAGE;
                 request.getSession().setAttribute("input_error",true);
             }
             return resultRedirectPage;

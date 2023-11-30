@@ -11,7 +11,10 @@
     <title><fmt:message  key="edit_profile_label"/></title>
 </head>
 <body>
-    <h1><fmt:message  key="edit_profile_label"/></h1>
+<c:if test="${sessionScope.role == null || !sessionScope.role eq 'admin'}" >
+    <c:redirect url="/pages/error403.jsp"/>
+</c:if>
+<h1><fmt:message  key="edit_profile_label"/></h1>
     <form action="/main" method="post">
         <input type="hidden" name="command" value="update_user"/>
         <label for="username"><fmt:message  key="name"/></label>

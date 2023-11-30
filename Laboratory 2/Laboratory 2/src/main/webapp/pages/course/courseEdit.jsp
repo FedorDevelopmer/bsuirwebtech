@@ -8,12 +8,11 @@
 <head>
     <title>Изменение курса</title>
 </head>
-<c:if test="${sessionScope.role == null || !sessionScope.role eq 'admin'}">
-<c:redirect url="pages/error403.jsp"/>
-</c:if>
 <body>
+    <c:if test="${sessionScope.role == null || !sessionScope.role eq 'admin'}" >
+        <c:redirect url="/pages/error403.jsp"/>
+    </c:if>
     <h1>Изменение курса</h1>
-
     <form method="post" action="/main" accept-charset="UTF-8">
         <input type="hidden" name="command" value="course_edit">
         <label for="courseName">Название курса:</label>
@@ -33,7 +32,7 @@
         <button type="submit">Сохранить</button><br><br>
 
     </form>
-    <form action="/main" method="get">
+    <form action="/main" method="post">
         <input type="hidden" name="command" value="redirect"/>
         <input type="hidden" name="redirect" value="true"/>
         <input type="hidden" name="page" value="/pages/main.jsp"/>

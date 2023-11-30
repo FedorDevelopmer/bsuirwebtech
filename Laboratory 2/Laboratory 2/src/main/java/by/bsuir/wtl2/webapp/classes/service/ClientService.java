@@ -17,7 +17,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The ClientService class provides various operations related to client users.
+ * It includes methods for registering a client, logging in a client, updating a client, and retrieving a client by ID.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class ClientService {
+    /**
+     * Registers a client by creating a user and adding client-specific attributes to the database.
+     *
+     * @param client the client to register
+     * @return true if the client is successfully registered, false otherwise
+     * @throws ServiceException if an error occurs during the registration process
+     */
     public boolean registerClient(Client client) throws ServiceException{
         try {
             UserService userService = new UserService();
@@ -44,6 +59,16 @@ public class ClientService {
         }
         return true;
     }
+
+    /**
+     * Logs in a client by verifying the login credentials and retrieving the client information from the database.
+     *
+     * @param login the login of the client
+     * @param password the password of the client
+     * @param passwordIsHashed true if the password is already hashed, false otherwise
+     * @return the logged in client if the login is successful, null otherwise
+     * @throws ServiceException if an error occurs during the login process
+     */
     public Client loginClient(String login,String password,boolean passwordIsHashed) throws ServiceException {
         try {
             ClientDao clientDao = new ClientDao();
@@ -82,6 +107,15 @@ public class ClientService {
             throw new ServiceException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Updates a client by updating the user information and client-specific attributes in the database.
+     *
+     * @param originalClient the original client information
+     * @param updatedClient the updated client information
+     * @return true if the client is successfully updated, false otherwise
+     * @throws ServiceException if an error occurs during the update process
+     */
     public boolean updateClient(Client originalClient,Client updatedClient) throws ServiceException {
         try {
             UserService userService = new UserService();
@@ -101,6 +135,13 @@ public class ClientService {
         return true;
     }
 
+    /**
+     * Retrieves a client by their ID from the database.
+     *
+     * @param id the ID of the client
+     * @return the client with the specified ID if found, null otherwise
+     * @throws ServiceException if an error occurs during the retrieval process
+     */
     public Client getClientById(int id) throws ServiceException{
         Client client = new Client();
         try {
@@ -131,7 +172,12 @@ public class ClientService {
     }
 
 
-
+    /**
+     * Fills a client object with the provided parameters.
+     *
+     * @param client the client object to fill
+     * @param params the parameters to fill the client object with
+     */
     public void fillClientWithParams(Client client,Map<String,Object> params) {
         UserService.fillUserWithParams(client,params);
         client.setId(Integer.parseInt(String.valueOf(params.get("cl_id"))));

@@ -23,10 +23,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents a command for forming user orders.
+ *
+ * @author Fedor
+ * @version 1.0
+ * @since 2023-11-27
+ */
 public class FormUserOrdersCommand implements ICommand {
 
     private static final Logger logger = Logger.getLogger(FormUserOrdersCommand.class.getName());
 
+    /**
+     * This method completes the command for forming user orders.
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @param context  The servlet context.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException      If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         PageName resultRedirectPage = PageNames.USER_ORDERS;
@@ -37,31 +54,30 @@ public class FormUserOrdersCommand implements ICommand {
             LinkTablesService linkTablesService = new LinkTablesService();
             if (session.getAttribute("role").equals("client")) {
                 Client client = clientService.loginClient(String.valueOf(session.getAttribute("login")),
-                        String.valueOf(session.getAttribute("password_hash")),true);
+                        String.valueOf(session.getAttribute("password_hash")), true);
                 List<Order> orders = linkTablesService.getOrdersByUser(client);
                 List<List<Course>> orderCourses = new ArrayList<>();
-                for(Order order : orders){
+                for (Order order : orders) {
                     orderCourses.add(linkTablesService.getCoursesByOrder(order));
                 }
-                session.setAttribute("orders",orders);
-                session.setAttribute("courses",orderCourses);
+                session.setAttribute("orders", orders);
+                session.setAttribute("courses", orderCourses);
             } else {
                 Admin admin = adminService.loginAdmin(String.valueOf(session.getAttribute("login")),
-                        String.valueOf(session.getAttribute("password_hash")),true);
+                        String.valueOf(session.getAttribute("password_hash")), true);
                 List<Order> orders = linkTablesService.getOrdersByUser(admin);
                 List<List<Course>> orderCourses = new ArrayList<>();
-                for(Order order : orders){
+                for (Order order : orders) {
                     orderCourses.add(linkTablesService.getCoursesByOrder(order));
                 }
-                session.setAttribute("orders",orders);
-                session.setAttribute("courses",orderCourses);
+                session.setAttribute("orders", orders);
+                session.setAttribute("courses", orderCourses);
             }
             return resultRedirectPage;
-        }catch (Exception e){
-            logger.log(Level.ERROR,"Error while getting client/admin orders",e);
+        } catch (Exception e) {
+            logger.log(Level.ERROR, "Error while getting client/admin orders", e);
             resultRedirectPage = PageNames.ERROR_PAGE;
             return resultRedirectPage;
-
         }
     }
 }

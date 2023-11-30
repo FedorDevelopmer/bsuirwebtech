@@ -17,14 +17,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The UserDao class provides methods for managing users in the database.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class UserDao {
 
-    private static String userTableName = "User";
+    private static String userTableName = "users";
 
     private static ResultSet lastResult = null;
 
     private static boolean lastResultEmpty = true;
 
+    /**
+     * Adds a user to the database.
+     *
+     * @param attributes the attributes of the user
+     * @param params the parameters of the user
+     * @throws DaoException if an error occurs while adding the user
+     */
     public void addUser(List<String> attributes,
                          Map<String,Object> params) throws DaoException {
         try {
@@ -36,6 +50,16 @@ public class UserDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Updates a user in the database.
+     *
+     * @param updateAttributes the attributes to update
+     * @param params the parameters of the user
+     * @param selectAttributes the attributes to select
+     * @param newParams the new parameters of the user
+     * @throws DaoException if an error occurs while updating the user
+     */
     public void updateUser(List<String> updateAttributes, Map<String,Object> params,
                             List<String> selectAttributes, Map<String,Object> newParams)
             throws DaoException {
@@ -49,6 +73,15 @@ public class UserDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Gets a user from the database.
+     *
+     * @param selectionAttribute the attribute to select
+     * @param attributes the attributes to return
+     * @param params the parameters of the user
+     * @throws DaoException if an error occurs while getting the user
+     */
     public void getUser(String selectionAttribute, List<String> attributes, Map<String,Object> params)
             throws DaoException {
         try {
@@ -62,6 +95,13 @@ public class UserDao {
         }
     }
 
+    /**
+     * Deletes a user from the database.
+     *
+     * @param attributes the attributes of the user
+     * @param params the parameters of the user
+     * @throws DaoException if an error occurs while deleting the user
+     */
     public void deleteUser(List<String> attributes, Map<String,Object> params)throws DaoException {
         try{
             ConnectionPool pool = ConnectionPool.getInstance();
@@ -73,6 +113,12 @@ public class UserDao {
         }
     }
 
+    /**
+     * Gets the number of rows in the user table.
+     *
+     * @return the number of rows
+     * @throws DaoException if an error occurs while getting the number of rows
+     */
     public int getTableRowsCount() throws DaoException{
         int result = -1;
         try {
@@ -86,6 +132,12 @@ public class UserDao {
         return result;
     }
 
+    /**
+     * Retrieves the user ID from the last selection result.
+     *
+     * @return the user ID
+     * @throws DaoException if an error occurs while retrieving the user ID
+     */
     public String getUserById() throws DaoException {
         try {
             if(!lastResultEmpty) {
@@ -96,6 +148,14 @@ public class UserDao {
         }
         return null;
     }
+
+    /**
+     * Retrieves the selection result for a single user.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection result as a map of attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Map<String,Object> getUserSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultUser = new HashMap<>();
         try {
@@ -109,6 +169,14 @@ public class UserDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Retrieves the selection result for a specific attribute of a single user.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the value of the attribute
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Object getUserSelectionResult(String attribute) throws DaoException {
         try {
             if(!lastResultEmpty) {
@@ -121,6 +189,13 @@ public class UserDao {
         return null;
     }
 
+    /**
+     * Retrieves the selection results for multiple users.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection results as a list of maps, where each map represents a user with attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection results
+     */
     public List<Map<String,Object>> getUsersSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultUserAttributes = new HashMap<>();
         List<Map<String,Object>> resultUsersAttributes = new ArrayList<>();
@@ -145,6 +220,13 @@ public class UserDao {
         }
     }
 
+    /**
+     * Retrieves the selection results for a specific attribute of multiple users.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the values of the attribute as a list
+     * @throws DaoException if an error occurs while retrieving the selection results
+     */
     public List<Object> getUsersSelectionResult(String attribute) throws DaoException {
         List<Object> resultUsers = new ArrayList<>();
         try {
@@ -160,6 +242,11 @@ public class UserDao {
         }
     }
 
+    /**
+     * Retrieves the attributes of a user.
+     *
+     * @return the user attributes as a list
+     */
     public static List<String> userAttributes() {
         List<String> attributes = new ArrayList<>();
         attributes.add("u_id");
@@ -173,6 +260,12 @@ public class UserDao {
         return attributes;
     }
 
+    /**
+     * Retrieves the parameters of a user.
+     *
+     * @param user the user object
+     * @return the user parameters as a map of parameter-value pairs
+     */
     public static Map<String,Object> userParams(User user) {
         Map<String,Object> params = new HashMap<>();
         params.put("u_id", user.getId());

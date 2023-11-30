@@ -19,7 +19,23 @@ import java.util.HashMap;
 import java.sql.Date;
 
 
+/**
+ * The UserService class provides methods for managing user operations.
+ * It includes methods for user registration, updating user information, and checking user login, email, and phone number.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class UserService {
+
+    /**
+     * Registers a user by adding them to the database.
+     *
+     * @param user the user to register
+     * @return true if the user is successfully registered, false otherwise
+     * @throws ServiceException if an error occurs while registering the user
+     */
     public boolean registerUser(User user) throws ServiceException {
         try {
             String hashNumber = PasswordHashing.generatePasswordHash(user.getPassword());
@@ -36,6 +52,14 @@ public class UserService {
         return true;
     }
 
+    /**
+     * Updates a user's information in the database.
+     *
+     * @param originalUser the original user information
+     * @param updatedUser the updated user information
+     * @return true if the user information is successfully updated, false otherwise
+     * @throws ServiceException if an error occurs while updating the user information
+     */
     public boolean updateUser(User originalUser, User updatedUser) throws ServiceException {
         try {
             UserDao userDao = new UserDao();
@@ -49,6 +73,13 @@ public class UserService {
         return true;
     }
 
+    /**
+     * Checks if a user login exists in the database.
+     *
+     * @param user the user to check
+     * @return true if the user login exists, false otherwise
+     * @throws ServiceException if an error occurs while checking the user login
+     */
     public boolean checkUserLogin(User user) throws ServiceException{
         try {
             UserDao userDao = new UserDao();
@@ -64,6 +95,13 @@ public class UserService {
         }
     }
 
+    /**
+     * Checks if a user email exists in the database.
+     *
+     * @param user the user to check
+     * @return true if the user email exists, false otherwise
+     * @throws ServiceException if an error occurs while checking the user email
+     */
     public boolean checkUserEmail(User user) throws ServiceException{
         try {
             UserDao userDao = new UserDao();
@@ -78,6 +116,14 @@ public class UserService {
             throw new ServiceException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Checks if a user phone number exists in the database.
+     *
+     * @param user the user to check
+     * @return true if the user phone number exists, false otherwise
+     * @throws ServiceException if an error occurs while checking the user phone number
+     */
     public boolean checkUserPhoneNumber(User user) throws ServiceException{
         try {
             UserDao userDao = new UserDao();
@@ -92,7 +138,12 @@ public class UserService {
             throw new ServiceException(e.getMessage(),e);
         }
     }
-
+    /**
+     * Fills a user object with parameters retrieved from the database.
+     *
+     * @param user the user object to fill
+     * @param params the parameters retrieved from the database
+     */
     public static void fillUserWithParams(User user, Map<String,Object> params) {
         user.setId(Integer.parseInt(String.valueOf(params.get("u_id"))));
         user.setName(String.valueOf(params.get("u_name")));

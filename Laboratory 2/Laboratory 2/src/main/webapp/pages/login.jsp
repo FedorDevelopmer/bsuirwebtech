@@ -14,9 +14,9 @@
      <h1><fmt:message key="login_label"/></h1>
      <form action="/main" method="post">
         <input type="hidden" name="command" value="login">
-        <label for="email"><fmt:message key="login"/></label>
+        <label><fmt:message key="login"/></label>
         <input type="text" id="login" name="login" required><br><br>
-        <label for="password"><fmt:message key="password"/></label>
+        <label><fmt:message key="password"/></label>
         <input type="password" id="password" name="password" required><br><br>
         <button type="submit"><fmt:message key="login_label"/></button>
      </form>
@@ -24,7 +24,7 @@
         <label class="error"><fmt:message key="input_error"/></label>
      </c:if>
      <c:if test="${sessionScope.auth_error != null}">
-             <label class="error"><fmt:message key="auth_error"/></label>
+         <label class="error"><fmt:message key="auth_error"/></label>
      </c:if>
    </body>
 </html>

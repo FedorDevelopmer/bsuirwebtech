@@ -2,9 +2,19 @@ package by.bsuir.wtl2.webapp.classes.controller.logic;
 
 import by.bsuir.wtl2.webapp.classes.controller.commands.*;
 
+import javax.servlet.ServletException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents a singleton handler for commands to complete on request.
+ * It stores instances of commands in hashmap with String key of command name.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ */
 public class CommandHandler {
 
     private static final CommandHandler instance = new CommandHandler();
@@ -38,10 +48,17 @@ public class CommandHandler {
         commandMap.put("delete_course",new DeleteCourseCommand());
     }
 
+    /**
+     * This method return the instance of handler.
+     */
     public static CommandHandler getInstance(){
         return instance;
     }
 
+    /**
+     * This method return the instance of command by its name.
+     * @param name The name of command in hashmap
+     */
     public ICommand getCommandByName(String name){
         return commandMap.get(name);
     }

@@ -1,5 +1,13 @@
 package by.bsuir.wtl2.webapp.classes.entities;
 
+/**
+ * The Course class represents a course.
+ * It includes properties such as ID, name, price, author, description, and main technology.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class Course {
 
     private int id;
@@ -16,6 +24,7 @@ public class Course {
     public Course() {
 
     }
+
     public Course(String courseName, double coursePrice, String courseAuthor, String description, String mainTech) {
         this.name = courseName;
         this.price = coursePrice;

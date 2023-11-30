@@ -7,16 +7,30 @@ import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The InsertCommand class is responsible for creating and executing a insert command on a database.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ *
+ */
 public class InsertionCommand {
 
     private final static String COMMAND_TYPE = "insert";
 
     private final static Logger logger = Logger.getLogger(InsertionCommand.class.getName());
 
+    /** The insert command completing method
+     * @param dbConnection the database connection to use
+     * @param tableName the table insert to
+     * @param attributes the attributes of object to insert
+     * @param params the parameters of object to insert
+     * @throws SQLException if an error occurs while executing the insert command
+     */
     public static void completeCommand(Connection dbConnection, String tableName,
                                 List<String> attributes, Map<String,Object> params)
                                 throws SQLException {

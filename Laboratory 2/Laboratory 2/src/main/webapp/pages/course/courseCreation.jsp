@@ -10,6 +10,9 @@
     <title>Создание курса по программированию</title>
 </head>
 <body>
+    <c:if test="${sessionScope.role == null || !sessionScope.role eq 'admin'}" >
+        <c:redirect url="/pages/error403.jsp"/>
+    </c:if>
     <h1><fmt:message key="course_creation_label"/></h1>
     <form action="/main" method="post" accept-charset="UTF-8" >
         <input type="hidden" name="command" value="add_course"/>

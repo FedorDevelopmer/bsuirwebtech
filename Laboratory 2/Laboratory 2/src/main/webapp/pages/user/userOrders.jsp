@@ -10,6 +10,9 @@
     <title><fmt:message key="my_orders"/></title>
 </head>
 <body>
+    <c:if test="${sessionScope.role == null}" >
+        <c:redirect url="/pages/error403.jsp"/>
+    </c:if>
     <h1><fmt:message key="my_orders"/>:</h1>
         <c:if test="${sessionScope.orders != null && !sessionScope.orders.isEmpty()}">
             <c:forEach var="order" items="${sessionScope.orders}">
@@ -35,7 +38,7 @@
         <c:if test="${sessionScope.orders == null || sessionScope.orders.isEmpty()}">
         <h3><fmt:message key="no_orders"/></h3>
         </c:if>
-    <form action="/main" method="get">
+    <form action="/main" method="post">
         <input type="hidden" name="command" value="main" />
         <button class="button" type="submit"><fmt:message key="back_button"/></button>
     </form>

@@ -16,6 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * The OrderDao class provides methods for managing orders in the database.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class OrderDao {
 
     private static String orderTableName = "user_order";
@@ -24,6 +32,13 @@ public class OrderDao {
 
     private static boolean lastResultEmpty = true;
 
+    /**
+     * Adds an order to the database.
+     *
+     * @param attributes the attributes of the order
+     * @param params the parameters of the order
+     * @throws DaoException if an error occurs while adding the order
+     */
     public void addOrder(List<String> attributes,
                         Map<String,Object> params) throws DaoException {
         try {
@@ -35,6 +50,16 @@ public class OrderDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Updates an order in the database.
+     *
+     * @param updateAttributes the attributes to update
+     * @param params the parameters of the order
+     * @param selectAttributes the attributes to select
+     * @param newParams the new parameters of the order
+     * @throws DaoException if an error occurs while updating the order
+     */
     public void updateOrder(List<String> updateAttributes, Map<String,Object> params,
                            List<String> selectAttributes, Map<String,Object> newParams)
             throws DaoException {
@@ -48,6 +73,15 @@ public class OrderDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Gets an order from the database.
+     *
+     * @param selectionAttribute the attribute to select
+     * @param attributes the attributes to return
+     * @param params the parameters of the order
+     * @throws DaoException if an error occurs while getting the order
+     */
     public void getOrder(String selectionAttribute, List<String> attributes, Map<String,Object> params)
             throws DaoException {
         try {
@@ -62,6 +96,13 @@ public class OrderDao {
         }
     }
 
+    /**
+     * Deletes an order from the database.
+     *
+     * @param attributes the attributes of the order
+     * @param params the parameters of the order
+     * @throws DaoException if an error occurs while deleting the order
+     */
     public void deleteOrder(List<String> attributes, Map<String,Object> params)throws DaoException {
         try {
             ConnectionPool pool = ConnectionPool.getInstance();
@@ -73,6 +114,12 @@ public class OrderDao {
         }
     }
 
+    /**
+     * Gets the number of rows in the order table.
+     *
+     * @return the number of rows
+     * @throws DaoException if an error occurs while getting the number of rows
+     */
     public int getTableRowsCount() throws DaoException{
         int result = -1;
         try {
@@ -86,17 +133,14 @@ public class OrderDao {
         return result;
     }
 
-    public String getOrderById() throws DaoException {
-        try {
-            if(!lastResultEmpty) {
-                return lastResult.getString("ord_id");
-            }
-        } catch (SQLException e) {
-            throw new DaoException(e.getMessage(),e);
-        }
-        return null;
-    }
-
+    /**
+     * Gets a list of orders from the database using pagination.
+     *
+     * @param selectionAttribute the attribute to select
+     * @param offset the offset for pagination
+     * @param limit the limit for pagination
+     * @throws DaoException if an error occurs while getting the order list
+     */
     public void getOrderList(String selectionAttribute,int offset,int limit)
             throws DaoException {
         try {
@@ -111,7 +155,13 @@ public class OrderDao {
         }
     }
 
-
+    /**
+     * Retrieves the selection result for a single order.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection result as a map of attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Map<String,Object> getOrderSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultUser = new HashMap<>();
         try {
@@ -125,6 +175,14 @@ public class OrderDao {
             throw new DaoException(e.getMessage(),e);
         }
     }
+
+    /**
+     * Retrieves the selection result for a specific attribute of a single order.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the value of the attribute
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Object getOrderSelectionResult(String attribute) throws DaoException {
         try {
             if(!lastResultEmpty) {
@@ -136,6 +194,13 @@ public class OrderDao {
         return null;
     }
 
+    /**
+     * Retrieves the selection results for multiple orders.
+     *
+     * @param attributes the attributes to retrieve
+     * @return the selection results as a list of maps, where each map represents an order with attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection results
+     */
     public List<Map<String,Object>> getOrdersSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultOrder = new HashMap<>();
         List<Map<String,Object>> resultOrders = new ArrayList<>();
@@ -160,6 +225,13 @@ public class OrderDao {
         }
     }
 
+    /**
+     * Retrieves the selection results for a specific attribute of multiple orders.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the values of the attribute as a list
+     * @throws DaoException if an error occurs while retrieving the selection results
+     */
     public List<Object> getOrdersSelectionResult(String attribute) throws DaoException {
         List<Object> resultOrders = new ArrayList<>();
         try {
@@ -175,6 +247,11 @@ public class OrderDao {
         }
     }
 
+    /**
+     * Retrieves the attributes of an order.
+     *
+     * @return the order attributes as a list
+     */
     public static List<String> orderAttributes() {
         List<String> attributes = new ArrayList<>();
         attributes.add("ord_id");
@@ -184,6 +261,12 @@ public class OrderDao {
         return attributes;
     }
 
+    /**
+     * Retrieves the parameters of an order.
+     *
+     * @param order the order object
+     * @return the order parameters as a map of parameter-value pairs
+     */
     public static Map<String,Object> orderParams(Order order) {
         Map<String,Object> params = new HashMap<>();
         params.put("ord_id",order.getId());

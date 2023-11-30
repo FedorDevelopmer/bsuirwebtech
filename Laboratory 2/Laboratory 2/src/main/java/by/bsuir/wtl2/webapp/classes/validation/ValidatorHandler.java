@@ -6,12 +6,23 @@ import by.bsuir.wtl2.webapp.classes.validation.validators.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The ValidatorHandler class is responsible for managing validators.
+ * It provides methods for retrieving validators by name.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class ValidatorHandler {
         private static final ValidatorHandler instance = new ValidatorHandler();
 
         private static Map<String, IValidator> validatorMap;
 
-        public ValidatorHandler(){
+    /**
+     * Creates a new instance of the ValidatorHandler class and initializes the validator map.
+     */
+    public ValidatorHandler(){
             validatorMap = new HashMap<>();
             validatorMap.put("name_validator",new NameValidator());
             validatorMap.put("text_validator",new TextValidator());
@@ -20,11 +31,21 @@ public class ValidatorHandler {
             validatorMap.put("price_validator",new NumberValidator());
         }
 
-        public static ValidatorHandler getInstance(){
+    /**
+     * Retrieves the singleton instance of the ValidatorHandler class.
+     *
+     * @return the singleton instance
+     */
+    public static ValidatorHandler getInstance(){
             return instance;
         }
-
-        public IValidator getValidatorByName(String name){
+    /**
+     * Retrieves a validator by name.
+     *
+     * @param name the name of the validator
+     * @return the validator with the specified name, or null if not found
+     */
+    public IValidator getValidatorByName(String name){
             return validatorMap.get(name);
         }
 

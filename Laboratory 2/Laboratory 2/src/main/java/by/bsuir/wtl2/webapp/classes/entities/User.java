@@ -2,6 +2,14 @@ package by.bsuir.wtl2.webapp.classes.entities;
 
 import java.sql.Date;
 
+/**
+ * The Order class represents an order.
+ * It includes properties such as ID, creation date, summary price, and acceptance status.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class User {
 
     private int id;
@@ -21,6 +29,18 @@ public class User {
 
     public User(){
 
+    }
+
+    public User(int id,String name,String surname,String phoneNumber,String email,
+                String login,String password,Date registrationDate){
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.registrationDate = registrationDate;
     }
 
     public String getName() {

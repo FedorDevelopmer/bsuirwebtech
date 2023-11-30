@@ -15,7 +15,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents a command for loading the cart.
+ *
+ * @author Fedor
+ * @since 2023-11-27
+ * @version 1.0
+ */
 public class LoadCartCommand implements ICommand {
+
+    /**
+     * This method executes the command.
+     *
+     * @param request The HTTP request.
+     * @param response The HTTP response.
+     * @param context The servlet context.
+     * @return The name of the page to redirect to.
+     * @throws ServletException If an error occurs during execution.
+     * @throws IOException If an error occurs during I/O.
+     */
     @Override
     public PageName completeCommand(HttpServletRequest request, HttpServletResponse response, ServletContext context) throws ServletException, IOException {
         Cart cart = new Cart();
@@ -25,7 +43,7 @@ public class LoadCartCommand implements ICommand {
             cart = (Cart) objCart;
         }
         List<Course> chosenCourses = new ArrayList<>(cart.getAll());
-        if(chosenCourses.isEmpty()) {
+        if (chosenCourses.isEmpty()) {
             session.setAttribute("chosen", null);
         } else {
             session.setAttribute("chosen", chosenCourses);

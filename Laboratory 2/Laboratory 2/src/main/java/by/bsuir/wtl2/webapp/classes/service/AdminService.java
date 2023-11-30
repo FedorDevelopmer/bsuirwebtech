@@ -10,7 +10,22 @@ import by.bsuir.wtl2.webapp.classes.exceptions.ServiceException;
 import java.text.ParseException;
 import java.util.*;
 
+/**
+ * The AdminService class provides operations related to administrators.
+ * It includes methods for registering an admin, updating an admin, and logging in an admin.
+ *
+ * @version 1.0
+ * @author Fedor
+ * @since 2023-11-29
+ */
 public class AdminService {
+    /**
+     * Registers a new admin.
+     *
+     * @param admin the admin to register
+     * @return true if the admin is successfully registered, false otherwise
+     * @throws ServiceException if an error occurs during registration
+     */
     public boolean registerAdmin(Admin admin) throws ServiceException {
         try {
             UserService userService = new UserService();
@@ -37,6 +52,15 @@ public class AdminService {
         }
         return true;
     }
+
+    /**
+     * Updates an existing admin.
+     *
+     * @param originalAdmin the original admin to be updated
+     * @param updatedAdmin the updated admin
+     * @return true if the admin is successfully updated, false otherwise
+     * @throws ServiceException if an error occurs during admin update
+     */
     public boolean updateAdmin(Admin originalAdmin,Admin updatedAdmin) throws ServiceException {
         try {
             UserService userService = new UserService();
@@ -56,8 +80,15 @@ public class AdminService {
         return true;
     }
 
-
-
+    /**
+     * Logs in an admin with the specified login and password.
+     *
+     * @param login the login of the admin
+     * @param password the password of the admin
+     * @param passwordIsHashed true if the password is already hashed, false otherwise
+     * @return the logged-in admin, or null if login fails
+     * @throws ServiceException if an error occurs during login
+     */
     public Admin loginAdmin(String login, String password,boolean passwordIsHashed) throws ServiceException {
         try {
             AdminDao adminDao = new AdminDao();
@@ -98,8 +129,12 @@ public class AdminService {
         }
     }
 
-
-
+    /**
+     * Fills the admin object with the specified parameters.
+     *
+     * @param admin the admin object to fill
+     * @param params the parameters to fill the admin object with
+     */
     public void fillAdminWithParams(Admin admin,Map<String,Object> params) {
         UserService.fillUserWithParams(admin,params);
         admin.setId(Integer.parseInt(String.valueOf(params.get("adm_id"))));

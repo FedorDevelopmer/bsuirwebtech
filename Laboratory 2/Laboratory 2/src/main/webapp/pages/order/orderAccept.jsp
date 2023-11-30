@@ -10,6 +10,9 @@
     <title><fmt:message key="accept_orders"/></title>
 </head>
 <body>
+    <c:if test="${sessionScope.role == null || !sessionScope.role eq 'admin'}" >
+        <c:redirect url="/pages/error403.jsp"/>
+    </c:if>
     <c:if test="${applicationScope.orders != null && !applicationScope.orders.isEmpty()}">
         <c:forEach var="order" items="${applicationScope.orders}">
             <h3><fmt:message key="order_number"/>${order.id}</h3>
