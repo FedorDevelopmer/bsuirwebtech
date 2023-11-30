@@ -174,6 +174,13 @@ public class CourseDao {
         }
     }
 
+    /**
+     * Retrieves the selection result for a specific attribute of a single course.
+     *
+     * @param attribute the attribute to retrieve
+     * @return the value of the attribute
+     * @throws DaoException if an error occurs while retrieving the selection result
+     */
     public Map<String,Object> getCourseSelectionResult(String attribute) throws DaoException {
         Map<String,Object> resultOrder = new HashMap<>();
         try {
@@ -187,12 +194,13 @@ public class CourseDao {
     }
 
     /**
-     * Retrieves the selection result for a specific attribute of a single course.
+     * Retrieves the selection results for multiple courses.
      *
-     * @param attribute the attribute to retrieve
-     * @return the value of the attribute
-     * @throws DaoException if an error occurs while retrieving the selection result
+     * @param attributes the attributes to retrieve
+     * @return the selection results as a list of maps, where each map represents a course with attribute-value pairs
+     * @throws DaoException if an error occurs while retrieving the selection results
      */
+
     public List<Map<String,Object>> getCoursesSelectionResult(List<String> attributes) throws DaoException {
         Map<String,Object> resultCourseAttributes = new HashMap<>();
         List<Map<String,Object>> resultCoursesAttributes = new ArrayList<>();
@@ -218,9 +226,9 @@ public class CourseDao {
     }
 
     /**
-     * Retrieves the selection results for multiple courses.
+     * Retrieves the selected attribute values for multiple courses.
      *
-     * @param attributes the attributes to retrieve
+     * @param attribute the attribute to retrieve
      * @return the selection results as a list of maps, where each map represents a course with attribute-value pairs
      * @throws DaoException if an error occurs while retrieving the selection results
      */

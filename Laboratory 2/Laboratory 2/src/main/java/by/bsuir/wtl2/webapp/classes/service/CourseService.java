@@ -58,6 +58,7 @@ public class CourseService {
         }catch (DaoException e){
             throw new ServiceException(e.getMessage(),e);
         }
+        return true;
     }
 
     /**
